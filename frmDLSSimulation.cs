@@ -25,6 +25,7 @@ using Accord;
 using Accord.IO;
 using Accord.Math;
 using Accord.Statistics.Analysis;
+using System.Diagnostics;
 
 //using DLS.CommandLibrary;
 
@@ -66,8 +67,8 @@ namespace DLS
 
         private void btnSimulation_Click(object sender, EventArgs e)
         {
-            frmDLS frmDLS = new frmDLS(strDlsPath);
-            frmDLS.ShowDialog();
+            string sDLSPath = Application.StartupPath + "\\DLS\\bin\\bin.x86\\dls.exe";
+            Process.Start(sDLSPath);
         }
 
         private void btnProjectPath_Click(object sender, EventArgs e)
