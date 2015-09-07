@@ -140,7 +140,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MyPluginEngine\MyPluginEngine.csproj">
+    <ProjectReference Include="..\HeiHeDSS\MyPluginEngine\MyPluginEngine.csproj">
       <Project>{40e8851d-bde3-450e-af6a-5d4ca40b0fb7}</Project>
       <Name>MyPluginEngine</Name>
     </ProjectReference>

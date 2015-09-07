@@ -36,6 +36,7 @@ namespace DLS
         private IMap pMap = null;
         string strProjectPath = "";
         string strDlsPath = "";
+        string strToPath = "";
         List<string> lsbNames = new List<string>();
 
 
@@ -67,7 +68,8 @@ namespace DLS
 
         private void btnSimulation_Click(object sender, EventArgs e)
         {
-            string sDLSPath = Application.StartupPath + "\\DLS\\bin\\bin.x86\\dls.exe";
+            //string sDLSPath = Application.StartupPath + "\\DLS\\bin\\bin.x86\\dls.exe";
+            string sDLSPath = strToPath + "\\DLS\\bin\\bin.x86\\dls.exe";
             Process.Start(sDLSPath);
         }
 
@@ -76,7 +78,7 @@ namespace DLS
             MessageBox.Show(Application.StartupPath);
 
             string strFromPath = Application.StartupPath+ "\\DLS";
-            string strToPath = "";
+            
             FolderBrowserDialog fbd = new FolderBrowserDialog();
             fbd.Description = "请选择工程数据存储路径";
             if (fbd.ShowDialog() == DialogResult.OK)

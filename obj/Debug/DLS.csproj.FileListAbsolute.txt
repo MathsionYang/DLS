@@ -33,3 +33,15 @@ D:\77211356\GitHub\PluginEngine\MyPluginEngine\DLS\obj\Debug\DLS.Properties.Reso
 D:\77211356\GitHub\PluginEngine\MyPluginEngine\DLS\obj\Debug\DLS.csproj.GenerateResource.Cache
 D:\77211356\GitHub\PluginEngine\MyPluginEngine\DLS\obj\Debug\DLS.dll
 D:\77211356\GitHub\PluginEngine\MyPluginEngine\DLS\obj\Debug\DLS.pdb
+D:\77211356\GitHub\DLS\bin\Debug\DLS.dll
+D:\77211356\GitHub\DLS\bin\Debug\DLS.pdb
+D:\77211356\GitHub\DLS\bin\Debug\MyPluginEngine.dll
+D:\77211356\GitHub\DLS\bin\Debug\MyPluginEngine.pdb
+D:\77211356\GitHub\DLS\obj\Debug\DLS.csprojResolveAssemblyReference.cache
+D:\77211356\GitHub\DLS\obj\Debug\DLS.DataViewTest.resources
+D:\77211356\GitHub\DLS\obj\Debug\DLS.frmDLS.resources
+D:\77211356\GitHub\DLS\obj\Debug\DLS.frmDLSSimulation.resources
+D:\77211356\GitHub\DLS\obj\Debug\DLS.Properties.Resources.resources
+D:\77211356\GitHub\DLS\obj\Debug\DLS.csproj.GenerateResource.Cache
+D:\77211356\GitHub\DLS\obj\Debug\DLS.dll
+D:\77211356\GitHub\DLS\obj\Debug\DLS.pdb
