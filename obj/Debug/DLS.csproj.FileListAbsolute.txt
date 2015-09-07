@@ -45,3 +45,16 @@ D:\77211356\GitHub\DLS\obj\Debug\DLS.Properties.Resources.resources
 D:\77211356\GitHub\DLS\obj\Debug\DLS.csproj.GenerateResource.Cache
 D:\77211356\GitHub\DLS\obj\Debug\DLS.dll
 D:\77211356\GitHub\DLS\obj\Debug\DLS.pdb
+D:\GitHub\testDLS\DLS\bin\Debug\DLS.dll
+D:\GitHub\testDLS\DLS\bin\Debug\DLS.pdb
+D:\GitHub\testDLS\DLS\bin\Debug\MyPluginEngine.dll
+D:\GitHub\testDLS\DLS\bin\Debug\log4net.dll
+D:\GitHub\testDLS\DLS\bin\Debug\MyPluginEngine.pdb
+D:\GitHub\testDLS\DLS\obj\Debug\DLS.csprojResolveAssemblyReference.cache
+D:\GitHub\testDLS\DLS\obj\Debug\DLS.DataViewTest.resources
+D:\GitHub\testDLS\DLS\obj\Debug\DLS.frmDLS.resources
+D:\GitHub\testDLS\DLS\obj\Debug\DLS.frmDLSSimulation.resources
+D:\GitHub\testDLS\DLS\obj\Debug\DLS.Properties.Resources.resources
+D:\GitHub\testDLS\DLS\obj\Debug\DLS.csproj.GenerateResource.Cache
+D:\GitHub\testDLS\DLS\obj\Debug\DLS.dll
+D:\GitHub\testDLS\DLS\obj\Debug\DLS.pdb

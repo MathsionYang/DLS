@@ -69,7 +69,7 @@ namespace DLS
         private void btnSimulation_Click(object sender, EventArgs e)
         {
             //string sDLSPath = Application.StartupPath + "\\DLS\\bin\\bin.x86\\dls.exe";
-            string sDLSPath = strToPath + "\\DLS\\bin\\bin.x86\\dls.exe";
+            string sDLSPath = strToPath + "\\RunDLS\\bin\\bin.x86\\dls.exe";
             Process.Start(sDLSPath);
         }
 
@@ -77,7 +77,7 @@ namespace DLS
         {
             MessageBox.Show(Application.StartupPath);
 
-            string strFromPath = Application.StartupPath+ "\\DLS";
+            string strFromPath = Application.StartupPath + "\\RunDLS";
             
             FolderBrowserDialog fbd = new FolderBrowserDialog();
             fbd.Description = "请选择工程数据存储路径";
@@ -87,7 +87,7 @@ namespace DLS
                 strDlsPath = strToPath;
                 this.txtProjectPath.Text = strToPath;
                 //dls输入数据路径
-                strProjectPath = strToPath + "\\DLS\\DLS\\Input";
+                strProjectPath = strToPath + "\\RunDLS\\DLS\\Input";
 
                 CopyFolder(strFromPath,strToPath);
                 MessageBox.Show(this,"工程创建成功\""+strToPath+"\"","提示");
@@ -213,23 +213,23 @@ namespace DLS
 
         private void btnBoundary_Click(object sender, EventArgs e)
         {
-            IWorkspaceFactory workSpaceF = new RasterWorkspaceFactory();
-            IWorkspace workSpace;
-            string strToPath = "";
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
-            fbd.Description = "请选择栅格数据存储路径";
-            if (fbd.ShowDialog() == DialogResult.OK)
-            {
-                strToPath = fbd.SelectedPath;
-                this.txtProjectPath.Text = strToPath;
-                workSpace = workSpaceF.OpenFromFile(strToPath,0);
-                if(workSpace==null)
-                {
-                    MessageBox.Show("Could not open workspce");
-                    return;
-                }
+            //IWorkspaceFactory workSpaceF = new RasterWorkspaceFactory();
+            //IWorkspace workSpace;
+            //string strToPath = "";
+            //FolderBrowserDialog fbd = new FolderBrowserDialog();
+            //fbd.Description = "请选择栅格数据存储路径";
+            //if (fbd.ShowDialog() == DialogResult.OK)
+            //{
+            //    strToPath = fbd.SelectedPath;
+            //    this.txtProjectPath.Text = strToPath;
+            //    workSpace = workSpaceF.OpenFromFile(strToPath,0);
+            //    if(workSpace==null)
+            //    {
+            //        MessageBox.Show("Could not open workspce");
+            //        return;
+            //    }
 
-            }
+            //}
         }
 
         private void Rater2Ascii(IGeoDataset mask,int cellsize,IGeoDataset inData,string ascFileName)
@@ -351,6 +351,11 @@ namespace DLS
                         {
                             //curRaster = (pLyr as IRasterLayer).Raster;
                             pGdsRstraint = (pLyr as IRasterLayer).Raster as IGeoDataset;
+
+
+                            //限制数据 region.grid
+                            string ascFileNameRstraint = strProjectPath + "\\region.grid";
+                            Rater2Ascii(pGdsMask, 100, pGdsRstraint, ascFileNameRstraint);
                         }
                         
                         //土地利用数据
@@ -372,7 +377,9 @@ namespace DLS
                             string ascFileNameLanduse = strProjectPath + "\\cov1_all.0";
                             //cov1_0.0;cov1_1.0;
                             Rater2Ascii(pGdsMask, 100, pGdsLanduse, ascFileNameLanduse);
-                            
+                            //
+
+
                             //将土地利用数据拆分
 
                             StreamReader sr = new StreamReader(ascFileNameLanduse, System.Text.Encoding.Default);
@@ -545,8 +552,8 @@ namespace DLS
                     // Populates coefficient overview with analysis data
                     //lra.Coefficients;
               
-                    MessageBox.Show(lra.Coefficients.Count.ToString());
-                    MessageBox.Show(lra.CoefficientValues[0].ToString());
+                    //MessageBox.Show(lra.Coefficients.Count.ToString());
+                    //MessageBox.Show(lra.CoefficientValues[0].ToString());
 
 
                     //string str_check = listBox_deVar.Items[var_count].ToString().ToLower();
@@ -848,6 +855,66 @@ namespace DLS
         private void btnRstraint_Click(object sender, EventArgs e)
         {
 
+        }
+        /// <summary>
+        /// 打开情景数据
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnDemandOpen_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofdDemand = new OpenFileDialog();
+            ofdDemand.InitialDirectory = strProjectPath;
+            ofdDemand.Filter = "(*.in1)|*.in1|" + "(*.txt)|*.txt|" + "(*.*)|*.*";
+            ofdDemand.FilterIndex = 0;
+            if (ofdDemand.ShowDialog() == DialogResult.OK)
+            {
+                StreamReader sr = new StreamReader(ofdDemand.FileName, System.Text.Encoding.Default);
+                try
+                {
+                    //使用StreamReader类来读取文件
+                    sr.BaseStream.Seek(0, SeekOrigin.Begin);
+                    // 从数据流中读取每一行，直到文件的最后一行，并在richTextBox1中显示出内容
+                    this.txtDemand.Text = "";
+                    string strLine = sr.ReadLine();
+                    while (strLine != null)
+                    {
+                        this.txtDemand.AppendText(strLine);
+                        strLine = sr.ReadLine();
+                    }
+                    //关闭此StreamReader对象
+                    sr.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    sr.Close();
+                }
+            }         
+        }
+        /// <summary>
+        /// 保存情景数据
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnDemandSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SaveFileDialog sfdDemand = new SaveFileDialog();
+                sfdDemand.InitialDirectory = strProjectPath;
+                sfdDemand.Filter = "(*.in1)|*.in1|" + "(*.txt)|*.txt|" + "(*.*)|*.*";
+                sfdDemand.FileName = "demand";
+
+                if (sfdDemand.ShowDialog() == DialogResult.OK)
+                {
+                    this.txtDemand.SaveFile(sfdDemand.FileName, RichTextBoxStreamType.PlainText);//重点在此句
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
