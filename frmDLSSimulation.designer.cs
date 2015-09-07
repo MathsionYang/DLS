@@ -43,6 +43,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.cmbBoundary = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.RegressionResult = new System.Windows.Forms.ListBox();
             this.btnRemoveX = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -62,13 +63,18 @@
             this.btnGenerateInputData = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.rtxtState = new System.Windows.Forms.RichTextBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.btnDemandOpen = new System.Windows.Forms.Button();
+            this.btnDemandSave = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtDemand = new System.Windows.Forms.RichTextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // cmbRstraint
@@ -86,17 +92,17 @@
             this.groupBox1.Controls.Add(this.btnParameterSave);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txtParameter);
-            this.groupBox1.Location = new System.Drawing.Point(12, 146);
+            this.groupBox1.Location = new System.Drawing.Point(12, 181);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(286, 191);
+            this.groupBox1.Size = new System.Drawing.Size(286, 176);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "3.参数设置";
+            this.groupBox1.Text = "4.参数设置";
             // 
             // btnParameterOpen
             // 
             this.btnParameterOpen.Image = ((System.Drawing.Image)(resources.GetObject("btnParameterOpen.Image")));
-            this.btnParameterOpen.Location = new System.Drawing.Point(210, 156);
+            this.btnParameterOpen.Location = new System.Drawing.Point(211, 142);
             this.btnParameterOpen.Name = "btnParameterOpen";
             this.btnParameterOpen.Size = new System.Drawing.Size(27, 27);
             this.btnParameterOpen.TabIndex = 8;
@@ -106,7 +112,7 @@
             // btnParameterSave
             // 
             this.btnParameterSave.Image = ((System.Drawing.Image)(resources.GetObject("btnParameterSave.Image")));
-            this.btnParameterSave.Location = new System.Drawing.Point(243, 156);
+            this.btnParameterSave.Location = new System.Drawing.Point(244, 142);
             this.btnParameterSave.Name = "btnParameterSave";
             this.btnParameterSave.Size = new System.Drawing.Size(27, 27);
             this.btnParameterSave.TabIndex = 8;
@@ -128,9 +134,9 @@
             this.txtParameter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtParameter.Location = new System.Drawing.Point(6, 20);
             this.txtParameter.Name = "txtParameter";
-            this.txtParameter.Size = new System.Drawing.Size(262, 130);
+            this.txtParameter.Size = new System.Drawing.Size(262, 116);
             this.txtParameter.TabIndex = 6;
-            this.txtParameter.Text = "6\n0 1 2 3 4 5\n0.8 0.8 0.8 0.8 0.8 0.9\n5\n2010 2011\n0\n1";
+            this.txtParameter.Text = "5\n0 1 2 3 4 \n0.8 0.9 0.7 0 0.1\n5\n2015 2020\n0\n1";
             this.txtParameter.MouseHover += new System.EventHandler(this.txtParameter_MouseHover);
             // 
             // groupBox2
@@ -138,12 +144,12 @@
             this.groupBox2.Controls.Add(this.btnRstraint);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.cmbRstraint);
-            this.groupBox2.Location = new System.Drawing.Point(12, 344);
+            this.groupBox2.Location = new System.Drawing.Point(12, 122);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(286, 57);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "4.限制区域";
+            this.groupBox2.Text = "3.限制区域";
             // 
             // btnRstraint
             // 
@@ -169,7 +175,7 @@
             this.groupBox3.Controls.Add(this.btnBoundary);
             this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.cmbBoundary);
-            this.groupBox3.Location = new System.Drawing.Point(12, 73);
+            this.groupBox3.Location = new System.Drawing.Point(12, 60);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(286, 56);
             this.groupBox3.TabIndex = 3;
@@ -222,7 +228,16 @@
             this.groupBox4.Size = new System.Drawing.Size(525, 337);
             this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "5.驱动因子";
+            this.groupBox4.Text = "6.驱动因子";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(327, 17);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(53, 12);
+            this.label6.TabIndex = 19;
+            this.label6.Text = "驱动因子";
             // 
             // RegressionResult
             // 
@@ -391,9 +406,9 @@
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.rtxtState);
-            this.groupBox6.Location = new System.Drawing.Point(12, 407);
+            this.groupBox6.Location = new System.Drawing.Point(304, 407);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(816, 104);
+            this.groupBox6.Size = new System.Drawing.Size(524, 104);
             this.groupBox6.TabIndex = 17;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "状态窗口";
@@ -406,32 +421,77 @@
             this.rtxtState.Location = new System.Drawing.Point(3, 17);
             this.rtxtState.Name = "rtxtState";
             this.rtxtState.ReadOnly = true;
-            this.rtxtState.Size = new System.Drawing.Size(810, 84);
+            this.rtxtState.Size = new System.Drawing.Size(518, 84);
             this.rtxtState.TabIndex = 18;
             this.rtxtState.Text = "";
             // 
-            // label6
+            // groupBox7
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(327, 17);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(53, 12);
-            this.label6.TabIndex = 19;
-            this.label6.Text = "驱动因子";
+            this.groupBox7.Controls.Add(this.btnDemandOpen);
+            this.groupBox7.Controls.Add(this.btnDemandSave);
+            this.groupBox7.Controls.Add(this.label10);
+            this.groupBox7.Controls.Add(this.txtDemand);
+            this.groupBox7.Location = new System.Drawing.Point(12, 363);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(286, 158);
+            this.groupBox7.TabIndex = 18;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "5.情景数据";
+            // 
+            // btnDemandOpen
+            // 
+            this.btnDemandOpen.Image = ((System.Drawing.Image)(resources.GetObject("btnDemandOpen.Image")));
+            this.btnDemandOpen.Location = new System.Drawing.Point(210, 121);
+            this.btnDemandOpen.Name = "btnDemandOpen";
+            this.btnDemandOpen.Size = new System.Drawing.Size(27, 27);
+            this.btnDemandOpen.TabIndex = 8;
+            this.btnDemandOpen.UseVisualStyleBackColor = true;
+            this.btnDemandOpen.Click += new System.EventHandler(this.btnDemandOpen_Click);
+            // 
+            // btnDemandSave
+            // 
+            this.btnDemandSave.Image = ((System.Drawing.Image)(resources.GetObject("btnDemandSave.Image")));
+            this.btnDemandSave.Location = new System.Drawing.Point(243, 121);
+            this.btnDemandSave.Name = "btnDemandSave";
+            this.btnDemandSave.Size = new System.Drawing.Size(27, 27);
+            this.btnDemandSave.TabIndex = 8;
+            this.btnDemandSave.UseVisualStyleBackColor = true;
+            this.btnDemandSave.Click += new System.EventHandler(this.btnDemandSave_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(-143, 43);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(53, 12);
+            this.label10.TabIndex = 7;
+            this.label10.Text = "参数设置";
+            // 
+            // txtDemand
+            // 
+            this.txtDemand.BackColor = System.Drawing.SystemColors.Window;
+            this.txtDemand.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDemand.Location = new System.Drawing.Point(8, 20);
+            this.txtDemand.Name = "txtDemand";
+            this.txtDemand.Size = new System.Drawing.Size(262, 95);
+            this.txtDemand.TabIndex = 6;
+            this.txtDemand.Text = "3831\t1158\t816\t1167\t1038\n3835\t1149\t820\t1176\t1030\n3839\t1140\t825\t1184\t1022\n3843\t1131" +
+    "\t829\t1193\t1014\n3847\t1120\t834\t1202\t1007\n3852\t1109\t839\t1211\t999";
             // 
             // frmDLSSimulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(834, 523);
+            this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.btnGenerateInputData);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.btnSimulation);
             this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox5);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
             this.Name = "frmDLSSimulation";
             this.Text = "空间布局模拟";
             this.Load += new System.EventHandler(this.frmDLSParemeters_Load);
@@ -446,6 +506,8 @@
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox6.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -486,5 +548,10 @@
         private System.Windows.Forms.RichTextBox rtxtState;
         private System.Windows.Forms.ListBox RegressionResult;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.Button btnDemandOpen;
+        private System.Windows.Forms.Button btnDemandSave;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.RichTextBox txtDemand;
     }
 }
