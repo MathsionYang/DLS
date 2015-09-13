@@ -241,7 +241,7 @@ namespace DLS
             //}
         }
 
-        private void Rater2Ascii(IGeoDataset mask,int cellsize,IGeoDataset inData,string ascFileName)
+        private void Rater2Ascii(IGeoDataset mask,double cellsize,IGeoDataset inData,string ascFileName)
         {
             if (mask == null)
                 return;
@@ -290,10 +290,16 @@ namespace DLS
         {
             //if (this.strProjectPath.Trim() == "")
             //    return;
-            //if (this.cmbBoundary.Text.Trim() == "")
-            //    return;
-            //if (this.cmbRstraint.Text.Trim() == "")
-            //    return;
+            if (this.cmbBoundary.Text.Trim() == "")
+            {
+                MessageBox.Show("请添加边界数据！","提示！",MessageBoxButtons.OK);
+                return;
+            }
+            if (this.cmbRstraint.Text.Trim() == "")
+            {
+                MessageBox.Show("请添加限制区域数据！", "提示！", MessageBoxButtons.OK);
+                return;
+            }
             //if (this.txtParameter.Text.Trim() == "")
             //    return;
             if (lsbLayerLandUse.Items.Count == 0)
@@ -310,6 +316,9 @@ namespace DLS
             IGeoDataset pGdsLanduse = null;
             IGeoDataset pGdsDriverFactor = null;
             IRasterBandCollection pRasterBandColection=(new RasterClass()) as IRasterBandCollection;
+
+            //读取
+            double cellSize = 1000;
             
             //try
             //{
@@ -323,11 +332,13 @@ namespace DLS
                     {
                         if (pLyr.Name == sLyrMask)
                         {
-                            //pRaster = (pLyr as IRasterLayer).Raster;
+                            IRasterProps pRasterP = (pLyr as IRasterLayer).Raster as IRasterProps;
+                            cellSize = pRasterP.MeanCellSize().X;
                             pGdsMask = (pLyr as IRasterLayer).Raster as IGeoDataset;
                         }
                     }
                 }
+
                 //data
                 //限制区
                 string sLyrRstraint = this.cmbBoundary.Text;
@@ -359,12 +370,13 @@ namespace DLS
                         if (pLyr.Name == sLyrRstraint)
                         {
                             //curRaster = (pLyr as IRasterLayer).Raster;
+                            //(pLyr as IRasterLayer).Raster.
                             pGdsRstraint = (pLyr as IRasterLayer).Raster as IGeoDataset;
 
 
                             //限制数据 region.grid
                             string ascFileNameRstraint = strProjectPath + "\\region.grid";
-                            Rater2Ascii(pGdsMask, 100, pGdsRstraint, ascFileNameRstraint);
+                            Rater2Ascii(pGdsMask,cellSize , pGdsRstraint, ascFileNameRstraint);
                         }
                         
                         //土地利用数据
@@ -385,7 +397,7 @@ namespace DLS
 
                             string ascFileNameLanduse = strProjectPath + "\\cov1_all.0";
                             //cov1_0.0;cov1_1.0;
-                            Rater2Ascii(pGdsMask, 100, pGdsLanduse, ascFileNameLanduse);
+                            Rater2Ascii(pGdsMask, cellSize, pGdsLanduse, ascFileNameLanduse);
                             //
 
 
@@ -465,7 +477,7 @@ namespace DLS
                                 this.rtxtState.AppendText("输出驱动因子数据【" + sFacName + "】\n");
                                 //IGeoDataset curMask = null;
                                 //curMask = pGdsMask;
-                                Rater2Ascii(pGdsMask, 100, pGdsDriverFactor, ascFileNameFac);
+                                Rater2Ascii(pGdsMask, cellSize, pGdsDriverFactor, ascFileNameFac);
                                 this.rtxtState.AppendText("输出驱动因子数据【" + sFacName + "】成功。\n");
                                 this.rtxtState.ScrollToCaret();
                                 //mask 添加到 IRasterBandCollection
@@ -609,7 +621,7 @@ namespace DLS
             
                 this.rtxtState.AppendText("制备驱动因子参数成功。\n");
                 this.rtxtState.ScrollToCaret();
-                MessageBox.Show(dtFactors.Rows.Count.ToString());
+                MessageBox.Show("制备驱动因子参数成功!","提示",MessageBoxButtons.OK);
             //}
             //catch (Exception ex)
             //{
