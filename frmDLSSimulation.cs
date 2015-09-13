@@ -31,7 +31,7 @@ using System.Diagnostics;
 
 namespace DLS
 {
-    public partial class frmDLSSimulation : Form
+    public partial class frmDLSSimulation : DevComponents.DotNetBar.OfficeForm
     {
         private IMap pMap = null;
         string strProjectPath = "";
@@ -43,6 +43,15 @@ namespace DLS
         public frmDLSSimulation()
         {
             InitializeComponent();
+            //禁用Glass主题
+            this.EnableGlass = false;
+            //不显示最大化最小化按钮
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            //
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            //去除图标
+            this.ShowIcon = false;
         }
 
         public frmDLSSimulation(IMap _pMap)
