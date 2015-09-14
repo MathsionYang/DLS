@@ -611,7 +611,7 @@ namespace DLS
                     {
                         //if ( < 0.05)
                         //{
-                        sw.WriteLine("\t" + Math.Round(lra.CoefficientValues[i]) + "\t" + var_number2);
+                        sw.WriteLine("\t" + Math.Round(lra.CoefficientValues[i],6) + "\t" + var_number2);
                         //}
                         var_number2 = var_number2 + 1;
                     }

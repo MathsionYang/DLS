@@ -482,6 +482,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(834, 523);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox6);
@@ -492,6 +493,7 @@
             this.Controls.Add(this.btnSimulation);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox5);
+            this.DoubleBuffered = true;
             this.Name = "frmDLSSimulation";
             this.Text = "空间布局模拟";
             this.Load += new System.EventHandler(this.frmDLSParemeters_Load);
